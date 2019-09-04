@@ -52,16 +52,13 @@ while fin==True:
         
         if juego[j][1]<=0:
             print ("GANA JUGADOR: ",j+1)
+            print("")
             fin=False
+            break
         if juego[j][1]>=0:
             print("posicion actual: ",juego)
         print ("")
         lef=input("Presione enter para continuar: ")
         
     
-
-print(juego)
-
-
-
 
