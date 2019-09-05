@@ -1,5 +1,6 @@
+#PROGRAMADORES:HARVEY RIASCOS, LUIS DIAZ,SEBASTIAN DELGADO
 import random
-
+import os
 posicion=0
 juego=[]
 nivel=[]
@@ -19,7 +20,7 @@ def dados():
     N=[]
     global par
     global defs
-    if par==2:
+    if par==3:
         sum=0
         defs=sum
         return sum
@@ -43,8 +44,15 @@ def Tablero_jugador(jugadores,nivel):
     for d in range (0,len(personajes)):
         juego.append([personajes[d],niveles(nivel)])
 
-
 print(".: CARRERA NUMÉRICA :.")
+while 1==1:
+    x=int(input("Digite cantidad de jugadores: "))
+    if x>1 and x<5:
+        break
+    else:
+        print("la cantidad de jugadores debe estar en 2 y 4 jugadores")
+
+
 print("")
 print ("Elegir un nivel...")
 print ("[1]Nivel Básico (Tablero de20 posiciones)")
@@ -52,12 +60,20 @@ print ("[2]Nivel Intermedio (Tablero de 30 posiciones)")
 print ("[3]Nivel Avanzado (Tablero de 50 posiciones)")
 print ("[5]Salir")
 print("")
-x=int(input("Digite cantidad de jugadores: "))
 
-y=int(input("Selección Nivel: "))
+
+while 1==1:
+    y=int(input("Selección Nivel: "))
+    if y>=1 and y<=3:
+        break
+    else:
+        print("los niveles deben estar entre 1 y 3")
+
 Tablero_jugador(x,y)
 while fin==True:
     for j in range (0,len(juego)):
+        os.system("cls")
+        print("Juego actual",juego)
         print("")
         print("TURNO JUGADOR: ",j+1)
         avanza=dados()
@@ -70,11 +86,10 @@ while fin==True:
             fin=False
             break
         if juego[j][1]>=0:
-            print("posicion actual: ",juego)
+            print("Juego ahora: ",juego)
             mins=defs
             print("esto",mins)
         print ("")
         lef=input("Presione enter para continuar: ")
-
 
 
