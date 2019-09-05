@@ -1,9 +1,12 @@
 import random
+
 posicion=0
 juego=[]
 nivel=[]
 personajes=[]
 fin=True
+par=0
+defs=0
 def niveles(nivel):
     if nivel==1:
         return 20
@@ -14,24 +17,34 @@ def niveles(nivel):
     
 def dados():
     N=[]
+    global par
+    global defs
+    if par==2:
+        sum=0
+        defs=sum
+        return sum
     for i in range(0,2):
         random_num = random.randrange(1,6)
         N.append(random_num)
     print("Dados: ", N)
     suma=N[0]+N[1]
-    print("Avanza: ",suma)
+    if N[0]==N[1]:
+        print ("es par repite")
+        par+=1
+        return suma+dados()
+    par=0
+    defs=suma
     return suma
+
 
 def Tablero_jugador(jugadores,nivel):
     for i in range (1,jugadores+1):
         personajes.append(i)
     for d in range (0,len(personajes)):
         juego.append([personajes[d],niveles(nivel)])
-    
-    
 
 
-print(".: CARRERA NUMERICA :.")
+print(".: CARRERA NUMÉRICA :.")
 print("")
 print ("Elegir un nivel...")
 print ("[1]Nivel Básico (Tablero de20 posiciones)")
@@ -48,6 +61,7 @@ while fin==True:
         print("")
         print("TURNO JUGADOR: ",j+1)
         avanza=dados()
+        print (" el numero total es :",avanza)
         juego[j][1]=juego[j][1]-avanza
         
         if juego[j][1]<=0:
@@ -57,8 +71,10 @@ while fin==True:
             break
         if juego[j][1]>=0:
             print("posicion actual: ",juego)
+            mins=defs
+            print("esto",mins)
         print ("")
         lef=input("Presione enter para continuar: ")
-        
-    
+
+
 
